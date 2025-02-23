@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0) }
+  10% { transform: translate(-5%, -5%) }
+  20% { transform: translate(-10%, 5%) }
+  30% { transform: translate(5%, -10%) }
+  40% { transform: translate(-5%, 15%) }
+  50% { transform: translate(-10%, 5%) }
+  60% { transform: translate(15%, 0) }
+  70% { transform: translate(0, 10%) }
+  80% { transform: translate(-15%, 0) }
+  90% { transform: translate(10%, 5%) }
+}
+
+/* TV Scan effect */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  background-image: url("data:image/png;base64,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");
+  opacity: 0.15;
+  animation: grain 8s steps(10) infinite;
+}
+
+/* TV Scanline effect */
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: scanline 6s linear infinite;
+  z-index: 51;
+}
+
+/* Cuphead-style decorative elements */
+.cuphead-border {
+  position: relative;
+}
+
+.cuphead-border::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 4px solid #2A1810;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transform-origin: center;
+  animation: borderAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.cuphead-border::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 4px solid #B4432B;
+  border-radius: inherit;
+  z-index: -2;
+  opacity: 0;
+  transform-origin: center;
+  animation: borderAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.15s;
+}
+
+@keyframes borderAppear {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.95);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotate(calc(var(--rotation) * 1.5)) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(var(--rotation)) scale(1);
+  }
+}
+
+/* Cuphead-style section titles */
+.section-title {
+  position: relative;
+  display: inline-block;
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: skew(-5deg);
+  text-shadow: 
+    3px 3px 0 #2A1810,
+    6px 6px 0 rgba(42,24,16,0.2);
+  padding: 0.5rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.section-title:hover {
+  transform: skew(-5deg) scale(1.05);
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: -4px;
+  right: -4px;
+  height: 4px;
+  background: #B4432B;
+  transform: skew(var(--skew)) scaleX(0);
+  transform-origin: left;
+  animation: titleUnderline 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: -6px;
+  right: -6px;
+  height: 4px;
+  background: #2A1810;
+  transform: skew(calc(var(--skew) * -1)) scaleX(0);
+  transform-origin: right;
+  animation: titleUnderline 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.2s;
+}
+
+@keyframes titleUnderline {
+  0% {
+    transform: skew(var(--skew)) scaleX(0);
+  }
+  50% {
+    transform: skew(var(--skew)) scaleX(1.1);
+  }
+  100% {
+    transform: skew(var(--skew)) scaleX(1);
+  }
+}
