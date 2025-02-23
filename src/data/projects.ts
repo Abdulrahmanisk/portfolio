@@ -27,7 +27,7 @@ export const projects = [
     title: "Slime Game",
     description: "A challenging platformer game developed in Unity where players control a slime character trying to reach the top. Each jump and fall affects the slime's HP, while collecting mini slimes provides healing. The game features dynamic physics, engaging gameplay mechanics, and vibrant visuals.",
     images: [
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2070",
+      "\src\data\img\slime1.png",
       "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2070",
       "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2070"
     ],
