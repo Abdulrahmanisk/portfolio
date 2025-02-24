@@ -1,6 +1,6 @@
-import slime1 from '../data/img/slime1.png';
-import slime2 from '../data/img/slime2.png';
-import slime3 from '../data/img/slime3.png';
+import slime1 from '../img/slime1.png';
+import slime2 from '../img/slime2.png';
+import slime3 from '../img/slime3.png';
 
 export const projects = [
   {
