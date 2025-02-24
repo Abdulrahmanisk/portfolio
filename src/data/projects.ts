@@ -1,3 +1,7 @@
+import slime1 from '../data/img/slime1.png';
+import slime2 from '../data/img/slime2.png';
+import slime3 from '../data/img/slime3.png';
+
 export const projects = [
   {
     title: "Class X",
@@ -27,9 +31,9 @@ export const projects = [
     title: "Slime Game",
     description: "A challenging platformer game developed in Unity where players control a slime character trying to reach the top. Each jump and fall affects the slime's HP, while collecting mini slimes provides healing. The game features dynamic physics, engaging gameplay mechanics, and vibrant visuals.",
     images: [
-      "/img/slime1.png",
-      "/img/slime2.png",
-      "/img/slime3.png"
+      slime1,
+      slime2,
+      slime3
     ],
     technologies: ["Unity", "C#", "2D Game Development", "Physics Engine"],
     demoUrl: "https://drive.google.com/file/d/1H7ebfA7AyAhq5HMYaQvImPWNf42YcyDl/view",
